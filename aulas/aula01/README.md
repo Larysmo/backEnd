@@ -33,3 +33,14 @@ git commit -m 'Comentario'
 ```shell
 git push origin nome_da_branch
 ```
+
+7. Trocar de uma branch pra outra
+```shell
+git checkout nome_da_branch_de_destino
+```
+
+8. Enviar alterações de uma branch pra outra
+```shell
+git checkout nome_da_branch_a_incluir_a_alteração
+git merge nome_da_branch_com_alteração
+```
