@@ -1,0 +1,19 @@
+{
+  "produtos": [
+    {
+      "nome": "caju",
+      "preco": 35,
+      "id": "2"
+    },
+    {
+      "nome": "pequi",
+      "preco": 90,
+      "id": "3"
+    },
+    {
+      "id": "90a1",
+      "nome": "abacate",
+      "preco": 25
+    }
+  ]
+}
