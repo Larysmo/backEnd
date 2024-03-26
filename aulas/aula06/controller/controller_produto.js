@@ -27,6 +27,15 @@ function criar (req, res){
     res.status(201).json(produtoNovo)
 }
 
+function validarDados(req,res,next){
+    const {nome, preco} = req.body;
+    if (nome && preco){
+        next()
+    }else{
+        res.status(422).json({msg: "Nome e preco obrigatorios"})
+    }
+}
+
 function atualizar (req, res){
     // cópia do codigo de buscarPeloID
    // const {produtoId} = req.params; // {chave: valor, chave: valor}. se só uma propriedade informar {produtoId: valor} 
@@ -53,4 +62,4 @@ function remover (req, res){
 }
 
 
-module.exports = {listarTodos, buscarPeloId, criar, atualizar, remover, exibir}
+module.exports = {listarTodos, buscarPeloId, validarDados, criar, atualizar, remover, exibir}
