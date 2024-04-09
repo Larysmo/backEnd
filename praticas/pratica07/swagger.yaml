@@ -1,0 +1,86 @@
+# 3 a) Abra o arquivo swagger.yaml e crie a estrutura de um Swagger Document.
+# 3 b) Atribua a versão 3.0.0 no elemento openapi.
+openapi: 3.0.0
+info:
+  title: pratica07
+  description: 'Ambiente de desenvolvimento'
+  version: 0.1.1
+tags:
+  name: produtos
+servers:
+  url: http://localhost:3000
+  description: 'Ambiente de desenvolvimento'
+paths:
+  /produtos:
+    get:
+      tags: 
+        - produtos
+      responses:
+        200:
+          description: 'Lista de produtos'
+          content:
+              application/json:
+                schema: 
+                  '$ref/components/schemas/ArrayOfProdutos'
+    post:
+      tags:
+        - produtos  
+      requestBody:
+        description: 'JSON com dados do novo produto'
+        required: true
+        content:
+          application/json:
+            schema:
+              '$ref/components/schemas/Produto'
+        reponses:
+          201:
+            description: 'Produto criado com sucesso'
+            content: 
+              application/json:
+                schema:
+                  '$ref/components/schemas/Produto'
+          422:
+            description: 'Nome e preço são obrigatórios'
+  /produtos{id}:
+    get:
+      tags:
+        - produtos
+      parameters:
+        in: path
+        name: produtoId
+        type: integer
+        required: true
+        id: 'Produto a ser buscado'
+      responses:
+        200:
+          description: 'Json comdados do produtp buscado'
+          content: 
+            application/json:
+              schema:
+                '$ref/components/schemas/Produto'
+
+        404:
+          decription: 'Produto não encontrado'
+    put:
+      tags:
+        - produtos
+      parameters:
+        in: path
+        name: produtoId
+        type: integer
+        required: true
+        description: 'Id do produto a ser atualizado'
+      requestBody:
+        description: 'JSON com dados do novo produto'
+        required: true
+        content:
+          application/json:
+            schema:
+              '$ref/components/schemas/Produto'
+      responses:
+        200:
+        404:
+        422:
+      
+    delete:
+components:
