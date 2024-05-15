@@ -26,13 +26,19 @@ describe("API Loja Virtual", () => {
         expect(response.status).toBe(200)
         expect(response.type).toBe("application/json")
         if (response.body.length > 0){
-            id = response.body(0)._id.toString()
+            id = response.body[0]._id.toString()
         }
     })
 
     test('deve retornar 200 e um JSON no GET /produtos/id', async() => {
-        const resonse = await request.get(`/produtos/${id}`)
+        const response = await request.get(`/produtos/${id}`)
         expect(response.status).toBe(200)
+        expect(response.type).toBe("application/json")
+    })
+
+    test('Deve retornar 404 e um JSON no GET /produto/id', async ()=> {
+        const response = await request.get("/produtos/id")
+        expect(response.status).toBe(404)
         expect(response.type).toBe("application/json")
     })
     
