@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Produto = require('../models/model_produtos');
+const { removeListener } = require('../app');
 
 async function validarDados(req, res, next){
     const produto = new Produto(req.body)
@@ -42,4 +43,17 @@ async function obter(req,res) {
     res.json(produto)
 }
 
-module.exports = { validarDados, criar, obterTodos, obter, buscarPeloId }
+
+async function atualizar(req, res) {
+    const id = new mongoose.Types.ObjectId(req.params.id);
+    const produto = await Produto.findOneAndUpdate({ _id: id }, req.body);
+    res.json(produto);
+  }
+
+async function remover(req, res) {
+    const id = new mongoose.Types.ObjectId(req.params.id);
+    await Produto.findOneAndDelete({ _id: id }, req.body);
+    res.status (204).end()
+}
+  
+module.exports = { validarDados, criar, obterTodos, obter, buscarPeloId, atualizar, remover }
