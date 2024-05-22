@@ -44,3 +44,13 @@ git checkout nome_da_branch_de_destino
 git checkout nome_da_branch_a_incluir_a_alteração
 git merge nome_da_branch_com_alteração
 ```
+
+9. Criar api direto da pasta raiz (express)
+```shell
+npx express-generator --no-view <pasta>
+cd <pasta>
+npm install
+npm install mongoose dotenv
+npm install --save-dev nodemon
+"dev": "nodemon ./bin/www" # incluir na sessão scripts do package.json
+```
