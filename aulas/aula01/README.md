@@ -54,3 +54,8 @@ npm install mongoose dotenv
 npm install --save-dev nodemon
 "dev": "nodemon ./bin/www" # incluir na sessão scripts do package.json
 ```
+
+10. Criptografar token
+```shell
+npm install jsonwebtoken # criptografar token
+```

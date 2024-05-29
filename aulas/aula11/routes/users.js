@@ -1,10 +1,12 @@
 var express = require('express');
-const controller = require('../controllers/users')
+const controller = require("../controllers/users")
 var router = express.Router();
 
-// sem get para usuarios, apenas POST
-router.post('/', controller.criar)
 
-router.post('/login', controller.entrar )
+router.post("/", controller.criar);
+
+router.post("/login", controller.entrar);
+
+router.post('/renovar', controller.renovar);
 
 module.exports = router;
